@@ -1,0 +1,49 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
+// ---------------- LinkedListOperations Class ----------------
+class LinkedListOperations {
+
+    // Add elements at front until -1 is entered
+    public static void addElementsAtFront(LinkedList<Integer> list, Scanner scanner) {
+        int num;
+
+        while (true) {
+            num = scanner.nextInt();
+
+            if (num == -1) {
+                break;
+            }
+
+            list.addFirst(num);
+        }
+    }
+
+    // Count number of nodes
+    public static int countNodes(LinkedList<Integer> list) {
+        int count = 0;
+
+        for (int val : list) {
+            count++;
+        }
+
+        return count;
+    }
+}
+
+// ---------------- Footer (Main Class) ----------------
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        LinkedList<Integer> list = new LinkedList<>();
+
+        LinkedListOperations.addElementsAtFront(list, scanner);
+
+        System.out.println(LinkedListOperations.countNodes(list));
+
+        scanner.close();
+    }
+}
