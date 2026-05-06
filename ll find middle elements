@@ -1,0 +1,53 @@
+import java.util.*;
+class node{
+    int  data;
+    node addr;
+    node(int val){
+        data=val;
+        addr=null;
+    }
+}
+class Linkedlist{
+    node head=null;
+    void insertAtEnd(int val){
+        node newnode=new node(val);
+        if(head==null){
+            
+            head=newnode;
+        } else {
+            node temp=head;
+            while(temp.addr!=null){
+                temp=temp.addr;
+            }
+            temp.addr=newnode;
+        }
+    }
+    void findmiddle(){
+        if(head==null){
+            System.out.println("empty");
+        }
+        else {
+            node slow=head;
+            node fast=head;
+            while(fast!=null && fast.addr!=null){
+                slow=slow.addr;
+                fast=fast.addr.addr;
+            }
+            System.out.print(slow.data);
+        }
+    }
+}
+    
+public class Main{
+    public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        Linkedlist ll=new Linkedlist();
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){
+            int val=sc.nextInt();
+            ll.insertAtEnd(val);
+        }
+        ll.findmiddle();
+    
+    }
+}
