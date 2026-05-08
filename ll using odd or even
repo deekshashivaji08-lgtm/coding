@@ -1,0 +1,77 @@
+import java.util.*;
+
+class node {
+    int data;
+    node addr;
+    node(int val) {
+        data = val;
+        addr = null;
+    }
+}
+class Linkedlist {
+    node head = null;
+
+    void insertAtEnd(int val) {
+        node newnode = new node(val);
+        if (head == null) {
+            head = newnode;
+        } else {
+            node temp = head;
+
+            while (temp.addr != null) {
+                temp = temp.addr;
+            }
+            temp.addr = newnode;
+        }
+    }
+    void display() {
+        if (head == null) {
+            System.out.println("list is empty");
+        } else {
+            node temp = head;
+
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.addr;
+            }
+        }
+    }                                                                                                             
+    void printOddEven() {
+        node temp = head;
+
+        System.out.print("Even ");
+        while (temp != null) {
+            if (temp.data % 2 == 0) {
+                System.out.print(temp.data + " ");
+            }
+            temp = temp.addr;
+        }
+
+        temp = head;
+
+        System.out.print("Odd ");
+        while (temp != null) {
+            if (temp.data % 2 != 0) {
+                System.out.print(temp.data + " ");
+            }
+            temp = temp.addr;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Linkedlist ll = new Linkedlist();
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int val = sc.nextInt();
+            ll.insertAtEnd(val);
+        }
+
+        ll.printOddEven();
+    }
+}
